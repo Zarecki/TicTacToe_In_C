@@ -105,7 +105,7 @@ int checkWin(char board[9], char active){
 int checkDraw(char board[9]){
     int isDraw = 1;
     for(int i = 0; i < 9; i++){
-        if (board[i] != 'X' || board[i] != 'O'){
+        if (board[i] != 'X' | board[i] != 'O'){
             isDraw = 0;
         }
     }
@@ -127,6 +127,7 @@ void rungame(){
 
     while (win == 0 && draw == 0){
         activePlayer = changeActivePlayer(activePlayer);
+        printf("Current player is: %c\n", activePlayer);
         drawBoard(gameBoard);
         markBoard(gameBoard, activePlayer);
         win = checkWin(gameBoard, activePlayer);
@@ -134,9 +135,15 @@ void rungame(){
     };
 
     drawBoard(gameBoard);
-    if (activePlayer == 'X'){
+
+
+    if(draw == 1){
+        printf("It's a Draw!!");
+    }
+    else if (activePlayer == 'X'){
         printf("THE WINNER IS PLAYER 1!!\n");
-    } else {
+    } 
+    else {
         printf("THE WINNER IS PLAYER 2!!\n");
     }
 }
